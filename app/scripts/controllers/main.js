@@ -15,8 +15,8 @@ angular.module('angular-examplesApp')
             nameService.check($scope.username).then(function() {
                 $scope.validatedName = $scope.username;
             }, function(err) {
-                $scope.error = err;
-            })
+                $scope.error = err.statusText;
+            });
         };
     
         $scope.filteredValue = $filter('nameFilter')('Walder');

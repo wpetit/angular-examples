@@ -8,14 +8,8 @@
  * Service in the angular-examplesApp.
  */
 angular.module('angular-examplesApp')
-  .service('nameService', function ($q) {
+  .service('nameService', function ($q, $http) {
     this.check = function(username) {
-        var deferred = $q.defer();
-        if(username === 'Hodor') {
-            deferred.resolve();
-        } else {
-            deferred.reject('Sorry, I just know Hodor !');
-        }
-        return deferred.promise;
-    }
+	return $http.get('/resources/'+username+'.json');
+    };
   });

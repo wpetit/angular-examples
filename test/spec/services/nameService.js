@@ -11,8 +11,12 @@ describe('Service: nameService', function () {
     nameService = _nameService_;
   }));
 
-  it('should do something', function () {
-    expect(!!nameService).toBe(true);
-  });
+  it('should get name resource', inject(function ($httpBackend) {
+    // mock rest api call  
+    $httpBackend.expectGET('/resources/Hodor.json').respond();
+    nameService.check('Hodor');
+    // trigger rest response
+    $httpBackend.flush();
+  }));
 
 });
